@@ -6,6 +6,7 @@
     <router-link to="/dashboard">Main</router-link>
     <router-link to="/dashboard/todo">Todo</router-link>
     <router-link to="/dashboard/todo/item">Todo Item</router-link>
+    <router-link to="/logout">Logout</router-link>
 
     <router-view></router-view>
     <Footer />

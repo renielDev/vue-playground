@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { requireAuth } from '@src/utils/auth'
+import auth, {requireAuth} from '@src/utils/auth'
 import Hello from '@components/hello'
 import Dashboard from '@components/dashboard'
 import Login from '@components/login'
@@ -12,8 +12,19 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/login',
+      component: Login,
+      beforeEnter: auth.isLoggedIn
+    },
+
+    {
+      path: '/logout',
+      beforeEnter: auth.logout
+    },
+
+    {
       path: '/',
-      component: Login
+      redirect: '/dashboard'
     },
 
     {

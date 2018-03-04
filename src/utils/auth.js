@@ -13,24 +13,29 @@ export default {
     return callback(false)
   },
 
-  isLoggedIn() {
-    console.log(cookie.get('token'))
+  isLoggedIn(to, from, next) {
+    if (cookie.get('token')) {
+      return next('/')
+    }
+    return next()
   },
 
-  logout() {
+  logout(to, from, next) {
     cookie.set('token', '')
+    return next('/login')
   }
 }
 
 
 export function requireAuth(to, from, next) {
-  console.log(cookie.get('token'))
+  // console.log('auth')
+  // console.log(cookie.get('token'))
   if (! cookie.get('token')) {
-    next({
-      'path' : '/',
-      'query': {redirect: to.fullPath}
+    return next({
+      'path' : '/login',
+      'query': { redirect: to.fullPath }
     })
   }
 
-  next()
+  return next()
 }

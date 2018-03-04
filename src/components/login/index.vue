@@ -24,18 +24,18 @@ export default {
     login() {
 
 
-      // console.log(process.env)
-      auth.login(this.username, this.password, (success) => {
-        console.log(this.$router)
-        console.log(this.$router.history.current.query.redirect)
-        if (success) {
-          this.$router.push(this.$router.history.current.query.redirect || '/dashboard')
-          return;
-        }
-
-        this.loggedInFailed = true
-        this.clearFields()
-      })
+      console.log(process.env)
+      // auth.login(this.username, this.password, (success) => {
+      //   console.log(this.$router)
+      //   console.log(this.$router.history.current.query.redirect)
+      //   if (success) {
+      //     this.$router.push(this.$router.history.current.query.redirect || '/dashboard')
+      //     return;
+      //   }
+      //
+      //   this.loggedInFailed = true
+      //   this.clearFields()
+      // })
 
 
       // this.loading = true;
