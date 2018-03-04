@@ -1,3 +1,4 @@
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 module.exports = {
@@ -6,6 +7,9 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public/dist')
   },
+  plugins: [
+    new Dotenv()
+  ],
   module: {
     rules: [
       {
@@ -25,9 +29,11 @@ module.exports = {
     ]
   },
   resolve: {
+    extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    },
-    extensions: ['.js', '.vue', '.json']
+      'vue$': 'vue/dist/vue.esm.js',
+      '@src': path.resolve('src'),
+      '@components': path.resolve('src/components')
+    }
   }
 };

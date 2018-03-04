@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <TodoForm
       @add="addTodo"
       :text="newTodoText"
@@ -17,8 +16,8 @@
 </template>
 
 <script>
-import TodoForm from './TodoForm'
-import TodoItem from './TodoItem'
+import TodoForm from '@components/todo/todo-form'
+import TodoItem from '@components/todo/todo-item'
 
 let nextTodoId = 1;
 
@@ -37,7 +36,6 @@ export default {
   methods: {
     setTodo(todo) {
       this.newTodoText = todo
-      console.log(todo)
     },
 
     addTodo() {
